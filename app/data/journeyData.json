@@ -1,0 +1,39 @@
+{
+  "journeySteps": [
+    {
+      "id": 1,
+      "title": "Student",
+      "description": "Individuals who want to start their career in software development begin their journey by joining our Java learning program.",
+      "position": "right",
+      "boxColor": "blue"
+    },
+    {
+      "id": 2,
+      "title": "Java Training",
+      "description": "Students learn core Java concepts, object-oriented programming, frameworks, and industry development practices through guided training sessions.",
+      "position": "left",
+      "boxColor": "gray"
+    },
+    {
+      "id": 3,
+      "title": "Real Projects",
+      "description": "Learners work on practical development projects that simulate real industry environments and strengthen their coding and problem-solving skills.",
+      "position": "right",
+      "boxColor": "gray"
+    },
+    {
+      "id": 4,
+      "title": "Developer Portfolio",
+      "description": "Students build a strong developer portfolio including project work, code samples, and technical skills that showcase their abilities.",
+      "position": "left",
+      "boxColor": "gray"
+    },
+    {
+      "id": 5,
+      "title": "Interview Preparation",
+      "description": "Focused preparation sessions help learners practice coding challenges, technical interviews, and communication skills required for developer roles.",
+      "position": "right",
+      "boxColor": "gray"
+    }
+  ]
+}

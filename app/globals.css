@@ -1,0 +1,362 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #1F76F9;
+  --subheading: #757575;
+  --stroke: #94A3B8;
+  --inputbg: #ededed;
+  --black: #181b1d;
+  --white: #ffffff;
+  --secondary: #757575;
+  --error: #ff0000;
+  --placeholder: #757575;
+  --vh: 1vh;
+  --gray: #f7f7f7;
+  --font-urbanist: var(--font-urbanist);
+  --sub-heading: #555555;
+}
+/* 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-poppins);
+} */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-urbanist), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-10 {
+  font-size: clamp(0.5rem, 0.4721rem + 0.1274vw, 0.625rem);
+}
+.font-12 {
+  font-size: clamp(10px, 1vw, 12px);
+}
+.font-14 {
+  font-size: clamp(0.625rem, 0.572rem + 0.2424vw, 0.875rem);
+}
+.font-16 {
+  font-size: clamp(0.8125rem, 0.7727rem + 0.1818vw, 1rem);
+}
+.font-18 {
+  font-size: clamp(0.75rem, 0.6705rem + 0.3636vw, 1.125rem);
+}
+.font-20 {
+  font-size: clamp(15px, 1.5vw, 20px);
+}
+.font-22 {
+  font-size: clamp(1rem, 0.9091rem + 0.5455vw, 1.375rem);
+}
+.font-24 {
+  font-size: clamp(14px, calc(12px + 0.625vw), 24px);
+}
+.font-26 {
+  font-size: clamp(16px, calc(14px + 0.625vw), 26px) !important;
+}
+.font-28 {
+  font-size: clamp(18px, calc(16px + 0.625vw), 28px);
+}
+.font-30 {
+  font-size: clamp(18px, 2vw, 30px);
+}
+.font-32 {
+  font-size: clamp(16px, calc(12.8px + 1vw), 32px);
+}
+.font-34 {
+  font-size: clamp(1rem, 0.8079rem + 0.878vw, 2.125rem);
+}
+.font-38 {
+  font-size: clamp(1.25rem, 0.8482rem + 1.2857vw, 2.375rem);
+}
+.font-42 {
+  font-size: clamp(1.25rem, 0.9435rem + 1.4013vw, 2.625rem) !important;
+}
+.font-44 {
+  font-size: clamp(22px, 3.5vw, 44px);
+}
+.font-46 {
+  font-size: clamp(1rem, 0.5766rem + 1.9355vw, 2.875rem);
+}
+.font-50 {
+  font-size: clamp(28px, 4vw, 50px);
+}
+.font-52 {
+  font-size: clamp(30px, 4.3vw, 52px);
+}
+.font-56 {
+  font-size: clamp(1.25rem, 0.293rem + 1.8605vw, 3.5rem);
+}
+.font-62 {
+  font-size: clamp(1.25rem, 0.6573rem + 2.7097vw, 3.875rem);
+}
+.font-67 {
+  font-size: clamp(1.5rem, 1.0625rem + 2vw, 4.1875rem);
+}
+.font-70 {
+  font-size: clamp(2rem, 5vw, 70px);
+}
+.font-80 {
+  font-size: clamp(40px, 7vw, 80px);
+}
+.font-120 {
+  font-size: clamp(1.5rem, 0.5233rem + 4.4651vw, 7.5rem);
+}
+
+/* fixed FONT SIZE */
+.fix-font-10 {
+  font-size: 10px !important;
+}
+.fix-font-12 {
+  font-size: 12px !important;
+}
+.fix-font-14 {
+  font-size: 14px !important;
+}
+.fix-font-16 {
+  font-size: 16px !important;
+}
+.fix-font-18 {
+  font-size: 18px !important;
+}
+.fix-font-20 {
+  font-size: 20px !important;
+}
+.fix-font-22 {
+  font-size: 22px !important;
+}
+.fix-font-24 {
+  font-size: 24px !important;
+}
+.fix-font-32{
+  font-size:32px !important;
+}
+/* FONT WEIGHT */
+.regular {
+  font-weight: 400 !important;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* Colors */
+.background-dark {
+  background-color: var(--background);
+}
+
+.text-dark {
+  color: var(--black);
+}
+.background-light {
+  background-color: var(--background);
+}
+
+.text-light {
+  color: var(--white);
+}
+
+.background-gray {
+  background-color: var(--gray);
+}
+.text-gray {
+  color: var(--gray);
+}
+.btnPrimary {
+  background-color: var(--primary);
+}
+.primary {
+  color: var(--primary);
+}
+
+.primary:hover {
+  color: var(--primary);
+}
+
+.subheading {
+  color: var(--subheading);
+}
+.stroke {
+  color: var(--stroke);
+}
+.inputbg {
+  background-color: var(--subheading);
+}
+.black {
+  color: var(--black);
+}
+.white {
+  color: var(--white);
+}
+.secondary {
+  color: var(--secondary);
+}
+.error {
+  color: var(--error);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+.bg-stroke {
+  background-color: var(--stroke);
+}
+.stroke-border {
+  border-color: var(--stroke) !important;
+}
+.subheading-border {
+  border-color: var(--subheading) !important;
+}
+
+.border-primary {
+  border-color: var(--primary) !important;
+}
+
+
+/* ===== Fully Hidden Scrollbar (Clean SaaS Style) ===== */
+
+.custom-scrollbar {
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+/* Chrome, Safari */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.max-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Remove default appearance */
+.custom-range {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #E5E7EB; /* light gray track */
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Track fill effect (we will control using inline style if needed) */
+.custom-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+/* Thumb */
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #09A2DB;
+  margin-top: -6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+
+.recharts-wrapper,
+.recharts-surface,
+.recharts-wrapper:focus,
+.recharts-surface:focus,
+svg:focus {
+  outline: none !important;
+}
+
+.recharts-wrapper,
+.recharts-surface {
+  outline: none !important;
+  border: none !important;
+}
+
+.recharts-wrapper:focus,
+.recharts-surface:focus,
+svg:focus {
+  outline: none !important;
+}
+
+svg {
+  outline: none !important;
+}
+
+.card-shadow {
+  box-shadow:0px 0px 6px 0px #0000001A;
+}
+
+
+
+.marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.marquee.reverse .marquee-content {
+  animation-direction: reverse;
+}
+
+.card {
+  position: relative;
+  width: 260px;
+  height: 280px;
+  /* border-radius: 12px; */
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

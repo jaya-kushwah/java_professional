@@ -1,0 +1,74 @@
+name: Deploy Next.js to Cloudways
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+      REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
+
+    - name: ⚙️ Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22'
+
+    # 1️⃣ Install ALL dependencies including TypeScript
+    - name: 📦 Install all dependencies (including dev)
+      run: |
+        npm ci --legacy-peer-deps
+        npm install --save-dev --legacy-peer-deps typescript
+
+    # 2️⃣ Build Next.js with ENV
+    - name: 🛠️ Build Next.js (Production)
+      env:
+        NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+      run: npm run build
+
+    # 3️⃣ SSH Setup
+    - name: 🔑 Setup SSH
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    # 4️⃣ Clear remote directory
+    - name: 🧹 Clear remote directory
+      run: |
+        ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST "rm -rf $REMOTE_PATH/*"
+
+    # 5️⃣ Deploy build artifacts
+    - name: 🚀 Deploy build artifacts
+      run: |
+        rsync -avz --delete \
+          --exclude='.git' \
+          --exclude='.github' \
+          --exclude='.next/cache' \
+          --exclude='node_modules' \
+          .next public package.json package-lock.json \
+          $SSH_USERNAME@$SSH_HOST:$REMOTE_PATH/
+
+    # 6️⃣ Install production deps + start PM2
+    - name: 🔄 Restart Next.js server (PM2 on port 8032)
+      run: |
+        ssh -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST "
+          cd $REMOTE_PATH && \
+          npm ci --omit=dev --legacy-peer-deps && \
+          pm2 stop java-professionals || true && \
+          pm2 delete java-professionals || true && \
+          NODE_ENV=production \
+          PORT=8032 \
+          NEXT_PUBLIC_API_URL='${{ secrets.NEXT_PUBLIC_API_URL }}' \
+          pm2 start npm --name java-professionals -- run start && \
+          pm2 save
+        "
