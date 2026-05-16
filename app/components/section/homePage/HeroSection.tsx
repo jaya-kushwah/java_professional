@@ -5,8 +5,8 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import BackendTraining from "./heroPage/BackendTraining";
 import EnterpriseArchitecture from "./heroPage/EnterpriseArchitecture";
-import JavaDeveloper from "./heroPage/JavaDeveloper";
-import SpringAi from "./heroPage/SpringAi";
+import JavaDeveloper from "./heroPage/javaDeveloper";
+import SpringAi from "./heroPage/springAi";
 
 export default function HeroSection() {
   return (
