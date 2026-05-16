@@ -61,28 +61,47 @@ const Testimonial = ({ id, courseData, isFormSubmitted, onShowVirtualTourMessage
   const isHeaderInView = useInView(headerRef, { once: true });
   const [active, setActive] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const startX = useRef(0)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const total = testimonialData.length
 
   const go = useCallback((dir: 'next' | 'prev') => {
+    if (!isMounted) return
     setActive(c => dir === 'next' ? (c + 1) % total : (c - 1 + total) % total)
-  }, [total])
+  }, [total, isMounted])
 
   const startAuto = useCallback(() => {
+    if (!isMounted) return
     if (timerRef.current) clearInterval(timerRef.current)
     timerRef.current = setInterval(() => go('next'), 3500)
-  }, [go])
+  }, [go, isMounted])
 
   const stopAuto = useCallback(() => {
     if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null }
   }, [])
 
-  useEffect(() => { startAuto(); return stopAuto }, [startAuto, stopAuto])
+  useEffect(() => {
+    setIsMounted(true)
+    return () => {
+      setIsMounted(false)
+      stopAuto()
+    }
+  }, [stopAuto])
 
-  const handleStart = (x: number) => { setIsDragging(true); startX.current = x; stopAuto() }
+  useEffect(() => { 
+    if (isMounted) {
+      startAuto()
+      return stopAuto
+    }
+  }, [startAuto, stopAuto, isMounted])
+
+  const handleStart = (x: number) => { 
+    if (!isMounted) return
+    setIsDragging(true); startX.current = x; stopAuto() 
+  }
   const handleEnd = (x: number) => {
-    if (!isDragging) return
+    if (!isDragging || !isMounted) return
     const dist = x - startX.current
     if (Math.abs(dist) > 50) go(dist < 0 ? 'next' : 'prev')
     setIsDragging(false)
@@ -246,7 +265,12 @@ const Testimonial = ({ id, courseData, isFormSubmitted, onShowVirtualTourMessage
           {/* Nav buttons */}
           <div className="flex justify-center gap-3 md:gap-4">
             <button
-              onClick={() => { go('next'); startAuto() }}
+              onClick={() => { 
+                if (isMounted) {
+                  go('next'); 
+                  startAuto() 
+                }
+              }}
               className={`w-10 h-10 rounded-sm cursor-pointer flex items-center justify-center transition ${
                 active > 0 
                   ? "bg-[#1F76F9] text-white hover:bg-[#1a6ae6]" 
@@ -256,7 +280,12 @@ const Testimonial = ({ id, courseData, isFormSubmitted, onShowVirtualTourMessage
               <ArrowLeft size={18} />
             </button>
             <button
-              onClick={() => { go('prev'); startAuto() }}
+              onClick={() => { 
+                if (isMounted) {
+                  go('prev'); 
+                  startAuto() 
+                }
+              }}
               className={`w-10 h-10 rounded-sm cursor-pointer flex items-center justify-center transition ${
                 active < total - 1 
                   ? "bg-[#1F76F9] text-white hover:bg-[#1a6ae6]" 

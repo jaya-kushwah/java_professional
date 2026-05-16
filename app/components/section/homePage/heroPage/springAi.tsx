@@ -11,7 +11,7 @@ import {
   Users,
 } from "lucide-react";
 
-export default function HeroSection() {
+export default function SpringAi() {
   const stat = [
     {
       title: "AI-Powered\nLearning",

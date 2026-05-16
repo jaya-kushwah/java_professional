@@ -1,195 +1,285 @@
 "use client";
 
 import Image from "next/image";
-import Button from "../../reusable/Button";
-import JourneyStepChart, { JourneyChartDataPoint } from "../../reusable/JourneyStepChart";
-import { svgImages } from "@/app/utils/localImages";
+import { svgImages, pngImages } from "@/app/utils/localImages";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import StudentGrowthCard from "./StudentGrowthCard";
+import RoadWithCharacter from "./RoadWithCharacter";
 
-interface Step {
+interface JourneyStep {
   id: number;
-  side: "left" | "right";
   title: string;
   description: string;
-  chartData?: JourneyChartDataPoint[];
+  growthPoints: string[];
+  chartColor: string;
 }
 
-const steps: Step[] = [
+const journeySteps: JourneyStep[] = [
   {
     id: 1,
-    side: "right",
     title: "Student",
-    description:
-      "Individuals who want to start their career in software development begin their journey by joining our Java learning program.",
+    description: "Individuals who want to start their career in software development begin their journey by joining our Java learning program.",
+    growthPoints: [
+      "Understand programming basics",
+      "Gain motivation & direction",
+      "Build a strong learning foundation"
+    ],
+    chartColor: "#3B82F6"
   },
   {
     id: 2,
-    side: "left",
     title: "Java Training",
-    description:
-      "Students learn core Java concepts, object-oriented programming, frameworks, and industry development practices through guided training sessions.",
-
+    description: "Students learn core Java concepts, object-oriented programming, frameworks, and industry development practices through guided training sessions.",
+    growthPoints: [
+      "Stronger problem-solving skills",
+      "Deeper understanding of Java",
+      "Confidence in coding"
+    ],
+    chartColor: "#8B5CF6"
   },
   {
     id: 3,
-    side: "right",
     title: "Real Projects",
-    description:
-      "Learners work on practical development projects that simulate real industry environments and strengthen their coding and problem-solving skills.",
-
+    description: "Learners work on practical development projects that simulate real industry environments and strengthen their coding and problem-solving skills.",
+    growthPoints: [
+      "Real-world experience",
+      "Hands-on learning",
+      "Better understanding of tools and best practices"
+    ],
+    chartColor: "#3B82F6"
   },
   {
     id: 4,
-    side: "left",
     title: "Developer Portfolio",
-    description:
-      "Students build a strong developer portfolio including project work, code samples, and technical skills that showcase their abilities.",
-
+    description: "Students build a strong developer portfolio including project work, code samples, and technical skills that showcase their abilities.",
+    growthPoints: [
+      "Professional portfolio",
+      "Showcase technical skills",
+      "Stand out to recruiters"
+    ],
+    chartColor: "#8B5CF6"
   },
   {
     id: 5,
-    side: "right",
     title: "Interview Preparation",
-    description:
-      "Focused preparation sessions help learners practice coding challenges, technical interviews, and communication skills required for developer roles.",
-  },
+    description: "Focused preparation sessions help learners practice coding challenges, technical interviews, and communication skills required for developer roles.",
+    growthPoints: [
+      "Interview-ready confidence",
+      "Strong communication skills",
+      "Job-ready mindset"
+    ],
+    chartColor: "#3B82F6"
+  }
 ];
 
-export default function AgentJourneyPage() {
+export default function DeveloperJourney() {
   const headerRef = useRef(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true });
+  
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [currentStage, setCurrentStage] = useState(0);
+  const [sectionHeight, setSectionHeight] = useState(0);
+
+  useEffect(() => {
+    const updateSectionHeight = () => {
+      if (cardsContainerRef.current) {
+        const height = cardsContainerRef.current.scrollHeight;
+        setSectionHeight(height);
+      }
+    };
+
+    // Initial update
+    setTimeout(updateSectionHeight, 100);
+    
+    // Update on resize
+    window.addEventListener('resize', updateSectionHeight);
+    
+    // Update when content changes
+    const observer = new MutationObserver(updateSectionHeight);
+    if (cardsContainerRef.current) {
+      observer.observe(cardsContainerRef.current, {
+        childList: true,
+        subtree: true,
+        attributes: true
+      });
+    }
+
+    return () => {
+      window.removeEventListener('resize', updateSectionHeight);
+      observer.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
+      const windowHeight = window.innerHeight;
+
+      // Calculate when section is in viewport
+      if (sectionTop < windowHeight && sectionTop + sectionHeight > 0) {
+        // Calculate progress based on section position
+        const visibleHeight = Math.min(windowHeight, sectionTop + sectionHeight) - Math.max(0, sectionTop);
+        const progress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (sectionHeight + windowHeight)));
+        
+        setScrollProgress(progress);
+        setCurrentStage(Math.min(Math.floor(progress * journeySteps.length), journeySteps.length - 1));
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial call
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <section className="relative py-12 bg-[#0F172A] overflow-hidden px-4">
+    <section ref={sectionRef} className="relative py-16 md:py-20 bg-[#03091E] overflow-hidden min-h-screen">
+      {/* Header Section */}
       <motion.div
         ref={headerRef}
         initial={{ opacity: 0, y: 30 }}
-        animate={
-          isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-        }
+        animate={isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-20"
+        className="text-center mb-12 md:mb-16 px-4"
       >
-        <div className="w-full flex justify-start md:justify-center">
-          <div className="inline-flex items-center gap-2 p-1
-    border border-[#FFFFFF33] rounded-full 
-    text-white uppercase tracking-wider">
-
-            <Image
-              src={svgImages.star}
-              alt="star" width={16} height={16}
-            />
-
-            <span className="font-16">
+        <div className="w-full flex justify-center mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 border border-[#1E3A8A] rounded-full bg-[#0A1628]">
+            <Image src={svgImages.star} alt="star" width={16} height={16} />
+            <span className="text-[#79A4FF] font-14 font-medium uppercase tracking-wider">
               Developer Journey
             </span>
           </div>
         </div>
 
-        <h2 className="text-white font-38 md:font-50 font-bold mb-2 
-  text-left md:text-center">
+        <h2 className="text-white text-3xl md:text-5xl font-bold mb-4 leading-tight">
           From Student to Professional Java
           <br />
           Developer
         </h2>
 
-        <p className="text-white font-16 md:font-18 max-w-xl mx-auto mb-4 
-  text-left md:text-center">
-          Our training model transforms beginners into industry-ready
-          developers through structured learning, real projects, and interview
-          preparation.
+        <p className="text-gray-300 text-base md:text-lg max-w-3xl mx-auto mb-6">
+          Our training model transforms beginners into industry-ready developers through structured learning, real projects, and interview preparation.
         </p>
-        <div className="flex justify-center">
-          <Button
-            text="Developer Journey Timeline"
-            variant="primary"
-            className="bg-gradient-to-r from-[#38BDF8] to-[#A855F7] rounded-md "
-          />
-        </div>
+
+        <button className="px-6 py-3 bg-gradient-to-r from-[#38BDF8] to-[#A855F7] text-white rounded-lg font-medium hover:opacity-90 transition-opacity">
+          Developer Journey Timeline
+        </button>
       </motion.div>
-      
-      <div className="relative max-w-4xl mx-auto px-4">
-        <div className="flex flex-col gap-2 md:gap-3">
-          {steps.map((step, index) => {
-            const stepRef = useRef(null);
-            const isStepInView = useInView(stepRef, { once: true, margin: "-30px" });
-            
-            return (
-              <motion.div
-                key={step.id}
-                ref={stepRef}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
-                className={`relative flex flex-col md:flex-row items-start ${index > 0 ? 'md:-mt-36' : ''}`}
-              >
-                {step.side === "right" && (
-                  <div className="hidden md:block md:w-1/2" />
-                )}
 
-                <div className="w-full md:w-1/2 relative">
-                  <div className="mb-4 md:mb-2 absolute md:pl-4 pl-4">
-                    <motion.h3 
-                      className="font-semibold text-base md:text-xl md:mb-2"
-                      initial={{ color: "#ffffff" }}
-                      animate={isStepInView ? { color: "#4f8ef7" } : { color: "#ffffff" }}
-                      transition={{ duration: 0.8, delay: index * 0.15 + 0.4, ease: "easeOut" }}
-                    >
-                      {step.title}
-                    </motion.h3>
-                    <p className="text-[#F2F6FA] text-xs md:text-sm leading-relaxed max-w-full md:max-w-[350px]">
-                      {step.description}
-                    </p>
-                  </div>
+      {/* Journey Steps with Road */}
+      <div className="relative px-4">
+        <div className="flex gap-8 lg:gap-12 max-w-7xl mx-auto relative">
+          
+          {/* Left Side - Winding Road with Moving Character (Desktop Only) */}
+          <div className="hidden lg:block lg:w-[350px] xl:w-[400px] flex-shrink-0 absolute left-0 top-0">
+            <div 
+              className="sticky top-24" 
+              style={{ 
+                height: sectionHeight ? `${sectionHeight}px` : '800px',
+                maxHeight: 'none'
+              }}
+            >
+              <RoadWithCharacter 
+                scrollProgress={scrollProgress} 
+                currentStage={currentStage}
+                sectionHeight={sectionHeight}
+              />
+            </div>
+          </div>
 
-                  <div className="md:mt-2">
-                    <StepChartCard data={step.chartData} index={index} />
-                  </div>
+          {/* Right Side - Journey Cards */}
+          <div ref={cardsContainerRef} className="flex-1 space-y-6 lg:ml-[380px] xl:ml-[430px]">
+            {journeySteps.map((step, index) => (
+              <div key={step.id}>
+                <StudentGrowthCard
+                  step={step}
+                  index={index}
+                />
+              </div>
+            ))}
+
+            {/* Final Success Banner */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative overflow-hidden  pl-10 min-h-[300px]"
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src={pngImages.route_bg}
+                  alt="Success Background"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 z-[1]"></div>
+
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                  <p className="text-white/90 text-sm md:text-base font-medium mb-2">
+                    YOU'RE NOW A
+                  </p>
+                  <h3 className="text-white text-3xl md:text-4xl font-bold mb-2">
+                    PROFESSIONAL JAVA
+                    <br />
+                    DEVELOPER!
+                  </h3>
+                  <p className="text-white/80 text-sm md:text-base">
+                    Ready to build your career and create a lasting impact.
+                  </p>
                 </div>
-              </motion.div>
-            );
-          })}
+                
+                <div className="relative">
+                    <Image 
+                      src={svgImages.trophy} 
+                      alt="Trophy" 
+                      width={100} 
+                      height={100}
+                      className="w-auto h-auto animate-float"
+                    />
+                  <div className="absolute -inset-4 bg-gradient-to-r from-[#38BDF8] to-[#A855F7] opacity-20 blur-2xl rounded-full"></div>
+                </div>
+              </div>
+
+              {/* Decorative Elements */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#8B5CF6]/10 rounded-full blur-2xl"></div>
+            </motion.div>
+          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translate(-50%, -50%) translateY(0px);
+          }
+          50% {
+            transform: translate(-50%, -50%) translateY(-10px);
+          }
+        }
+        
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+      `}</style>
     </section>
-  );
-}
-
-function StepChartCard({ data, index }: { data?: JourneyChartDataPoint[]; index: number }) {
-  const chartRef = useRef(null);
-  const isChartInView = useInView(chartRef, { once: true, margin: "-100px" });
-
-  return (
-    <motion.div
-      ref={chartRef}
-      initial={{ opacity: 0, y: 40 }}
-      animate={isChartInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 1.2, delay: index * 0.2, ease: "easeOut" }}
-      className="w-full overflow-hidden relative py-1"
-    >
-      {/* Mobile Chart */}
-      <div className="block md:hidden">
-        <JourneyStepChart 
-          data={data} 
-          width={140} 
-          height={230}
-          animated={isChartInView}
-          animationDelay={index * 0.2}
-        />
-      </div>
-      
-      {/* Desktop Chart */}
-      <div className="hidden md:block">
-        <JourneyStepChart 
-          data={data} 
-          width={170} 
-          height={342}
-          animated={isChartInView}
-          animationDelay={index * 0.2}
-        />
-      </div>
-    </motion.div>
   );
 }

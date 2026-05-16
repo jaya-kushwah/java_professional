@@ -141,7 +141,7 @@ export default function TechnologiesSection() {
                   className="relative z-10 
   w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24
   rounded-full shrink-0 mt-1 md:mt-7 
-  p-[1px] flex items-center justify-center"
+  p-px flex items-center justify-center"
                   style={{
                     background: stat.borderColor,
                   }}
@@ -163,7 +163,7 @@ export default function TechnologiesSection() {
                         alt={stat.name}
                         width={60}
                         height={60}
-                        quality={100}
+                        quality={75}
                         priority
                         className="w-6 h-6 sm:w-10 sm:h-10 md:w-14 md:h-14 object-contain"
                       />

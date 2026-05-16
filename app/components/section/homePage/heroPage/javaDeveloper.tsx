@@ -10,7 +10,8 @@ import {
   GraduationCap,
 } from "lucide-react";
 
-export default function HeroSection() {
+
+export default function JavaDeveloper() {
   const technologies = [
     { name: "Java", icon: svgImages.javaa },
     { name: "Spring", icon: svgImages.spring3d },
@@ -68,7 +69,7 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 w-full">
-        <div className="max-w-[1400] mx-auto">
+        <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 ">
 
             {/* Left Side - Content */}

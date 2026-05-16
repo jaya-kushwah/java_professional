@@ -26,6 +26,8 @@ import routes from "../../public/assets/images/webp/routes.webp";
 import developerBg from "../../public/assets/images/webp/developerBg.webp";
 import faq from "../../public/assets/images/webp/faq.webp";
 import footer from "../../public/assets/images/webp/footer.webp";
+import architecture from "../../public/assets/images/webp/architecture.webp";
+import route_bg from "../../public/assets/images/webp/route_bg.webp";
 
 // SVG
 import footer_logo from "../../public/assets/images/svg/footer_logo.svg";
@@ -84,7 +86,21 @@ import skill_7 from "../../public/assets/images/svg/skill_7.svg";
 import skill_8 from "../../public/assets/images/svg/skill_8.svg";         
 import skill_9 from "../../public/assets/images/svg/skill_9.svg";         
 import skill_10 from "../../public/assets/images/svg/skill_10.svg";         
-import skill_11 from "../../public/assets/images/svg/skill_11.svg";         
+import arrow from "../../public/assets/images/svg/arrow.svg";      
+import skill_11 from "../../public/assets/images/svg/skill_11.svg";
+import trophy from "../../public/assets/images/svg/trophy.svg";
+import char from "../../public/assets/images/svg/char.svg";
+import mind_icon from "../../public/assets/images/svg/mind_icon.svg";
+import code from "../../public/assets/images/svg/code.svg";
+import developer from "../../public/assets/images/svg/developer.svg";
+import Group from "../../public/assets/images/svg/Group.svg";
+import hiring from "../../public/assets/images/svg/hiring.svg";
+import learning_rate from "../../public/assets/images/svg/learning_rate.svg";
+import spring from "../../public/assets/images/svg/spring.svg";
+import success_rate from "../../public/assets/images/svg/success_rate.svg";
+import code_desktop from "../../public/assets/images/svg/code_desktop.svg";
+import doc from "../../public/assets/images/svg/doc.svg";
+import headphone from "../../public/assets/images/svg/headphone.svg";         
 
 export const pngImages = {
     hero_img,
@@ -113,7 +129,9 @@ export const pngImages = {
     routes,
     developerBg,
     faq,
-    footer
+    footer,
+    architecture,
+    route_bg
 };
 
 export const svgImages = {
@@ -173,5 +191,19 @@ export const svgImages = {
     skill_8,
     skill_9,
     skill_10,
-    skill_11
+    skill_11,
+    arrow,
+    trophy,
+    char,
+    mind_icon,
+    code,
+    developer,
+    Group,
+    hiring,
+    learning_rate,
+    spring,
+    success_rate,
+    code_desktop,
+    doc,
+    headphone
 };

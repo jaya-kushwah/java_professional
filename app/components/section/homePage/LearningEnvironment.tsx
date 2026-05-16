@@ -128,12 +128,16 @@ export default function LearningEnvironment() {
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.3 }}
                     className="relative w-10 h-10 md:w-17 md:h-17 flex items-center justify-center shrink-0 rounded-lg"
-                    style={{ backgroundColor: feature.iconBg }}
+                    style={{ backdropFilter: 'blur(18px)' }}
                   >
                     <Image
                       src={feature.icon}
                       alt={feature.title}
-                      className="w-6 h-6 md:w-10 md:h-10 object-contain"
+                      className="w-6 h-6 md:w-10 md:h-10 object-contain z-10"
+                    />
+                    <div 
+                      className="absolute w-8 h-4 md:w-12 md:h-6 rounded-full right-0 bottom-0"
+                      style={{ backgroundColor: feature.iconBg }}
                     />
                   </motion.div>
 

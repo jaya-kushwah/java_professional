@@ -56,7 +56,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="relative py-14 bg-[#f7f9fd] overflow-hidden">
+    <section className="relative py-14 overflow-hidden" style={{ background: "linear-gradient(360deg, #E5EDFB 0%, #FFFFFF 100%)" }}>
       <div className="max-container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 ">
           {/* Left Side - Header */}
@@ -68,10 +68,7 @@ export default function FAQ() {
             className="lg:col-span-4 "
           >
             <div
-              className="mt-2 rounded-md relative"
-              style={{
-                background: "linear-gradient(180deg, #ffffff 0%, #f7f9fd 100%)",
-              }}
+              className="mt-2 rounded-md relative bg-white"
             >
               <div className="p-4">
                 <div className="inline-flex items-center gap-2 mb-1 border border-[#E5E7EB] p-1 px-2 rounded-full">

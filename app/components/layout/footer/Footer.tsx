@@ -9,42 +9,47 @@ import { pngImages, svgImages } from "@/app/utils/localImages";
 export default function Footer() {
   const stats = [
     {
-      icon: "👥",
+      icon: svgImages.developer,
       number: "10K+",
       label: "Developers Trained",
-      color: "#3B82F6"
+      color: "#3B82F6",
+      bgColor: "#3B82F620"
     },
     {
-      icon: "💎",
+      icon: svgImages.hiring,
       number: "200+",
       label: "Hiring Partners",
-      color: "#8B5CF6"
+      color: "#8B5CF6",
+      bgColor: "#8B5CF620"
     },
     {
-      icon: "📊",
+      icon: svgImages.success_rate,
       number: "95%",
       label: "Success Rate",
-      color: "#0EA5E9"
+      color: "#3B82F6",
+      bgColor: "#3B82F620"
     },
     {
-      icon: "💻",
+      icon: svgImages.code,
       number: "500+",
       label: "Projects Completed",
-      color: "#F59E0B"
+      color: "#F59E0B",
+      bgColor: "#F59E0B20"
     },
     {
-      icon: "⭐",
+      icon: svgImages.learning_rate,
       number: "4.8/5",
       label: "Learner Rating",
-      color: "#EC4899"
+      color: "#8B5CF6",
+      bgColor: "#8B5CF620"
     }
   ];
 
   return (
-    <footer className="bg-[#0A1628] text-white">
+    <footer className="bg-[#020817] text-white">
       {/* Main Footer Content */}
-      <div className="max-container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           
           {/* Logo + About */}
           <div className="md:col-span-1">
@@ -57,59 +62,69 @@ export default function Footer() {
                 className="h-12 w-auto mb-4"
               />
               <p className="text-[#94A3B8] text-sm leading-relaxed">
-                Empowering aspiring Java developers with industry-focused training through real-world projects and career success.
+                Empowering aspiring Java developers with industry-focused training through real-world projects, and career success.
               </p>
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-3">Follow us</h4>
+              <h4 className="text-white font-semibold mb-4 text-base">Follow us</h4>
               <div className="flex gap-3">
-                <div className="w-10 h-10 bg-[#1E293B] rounded-lg flex items-center justify-center hover:bg-[#334155] transition-colors cursor-pointer">
-                  <FaXTwitter className="text-[#94A3B8] hover:text-white" size={18} />
-                </div>
-                <div className="w-10 h-10 bg-[#1E293B] rounded-lg flex items-center justify-center hover:bg-[#334155] transition-colors cursor-pointer">
-                  <FaInstagram className="text-[#94A3B8] hover:text-white" size={18} />
-                </div>
-                <div className="w-10 h-10 bg-[#1E293B] rounded-lg flex items-center justify-center hover:bg-[#334155] transition-colors cursor-pointer">
-                  <FaLinkedin className="text-[#94A3B8] hover:text-white" size={18} />
-                </div>
-                <div className="w-10 h-10 bg-[#1E293B] rounded-lg flex items-center justify-center hover:bg-[#334155] transition-colors cursor-pointer">
-                  <FaFacebook className="text-[#94A3B8] hover:text-white" size={18} />
-                </div>
-                <div className="w-10 h-10 bg-[#1E293B] rounded-lg flex items-center justify-center hover:bg-[#334155] transition-colors cursor-pointer">
-                  <FaYoutube className="text-[#94A3B8] hover:text-white" size={18} />
-                </div>
+                <Link href="#" className="w-10 h-10 border border-primary rounded-full flex items-center justify-center hover:bg-[#1E293B] transition-colors cursor-pointer">
+                  <FaXTwitter className="text-white transition-colors" size={18} />
+                </Link>
+                <Link href="#" className="w-10 h-10 border border-primary rounded-full flex items-center justify-center hover:bg-[#1E293B] transition-colors cursor-pointer">
+                  <FaInstagram className="text-white transition-colors" size={18} />
+                </Link>
+                <Link href="#" className="w-10 h-10 border border-primary rounded-full flex items-center justify-center hover:bg-[#1E293B] transition-colors cursor-pointer">
+                  <FaLinkedin className="text-white transition-colors" size={18} />
+                </Link>
+                <Link href="#" className="w-10 h-10 border border-primary rounded-full flex items-center justify-center hover:bg-[#1E293B] transition-colors cursor-pointer">
+                  <FaFacebook className="text-white transition-colors" size={18} />
+                </Link>
+                <Link href="#" className="w-10 h-10 border border-primary rounded-full flex items-center justify-center hover:bg-[#1E293B] transition-colors cursor-pointer">
+                  <FaYoutube className="text-white transition-colors" size={18} />
+                </Link>
               </div>
             </div>
           </div>
 
           {/* Programs */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-[#1E40AF] rounded-lg flex items-center justify-center">
-                <span className="text-white text-sm">📚</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 border border-[#1A72F5] bg-[#1A72F51A] rounded-lg flex items-center justify-center p-2">
+                <Image 
+                  src={svgImages.code_desktop} 
+                  alt="Programs"
+                  width={24}
+                  height={24}
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <h3 className="text-white font-semibold">Programs</h3>
+              <h3 className="text-white font-semibold text-lg">Programs</h3>
             </div>
             <ul className="space-y-3">
               <li>
-                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2">
-                  <span>›</span> Java Full Stack
+                <Link href="#" className="text-white transition-colors text-sm flex items-center gap-2 group">
+                  <span className=" text-[#3B82F6] group-hover:translate-x-1 transition-transform font-20">›</span> 
+                  <span className="font-semibold font-16">Java Full Stack</span>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2">
-                  <span>›</span> Spring Boot Backend
+                <Link href="#" className="text-white transition-colors text-sm flex items-center gap-2 group">
+                  <span className=" text-[#3B82F6] group-hover:translate-x-1 transition-transform font-20">›</span> 
+                  <span className="font-semibold font-16">Spring Boot Backend</span>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2">
-                  <span>›</span> Microservices Training
+                <Link href="#" className="text-white transition-colors text-sm flex items-center gap-2 group">
+                  <span className=" text-[#3B82F6] group-hover:translate-x-1 transition-transform font-20">›</span> 
+                  <span className="font-semibold font-16">Microservices Training</span>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2">
-                  <span>›</span> AI with Java
+                <Link href="#" className="text-white transition-colors text-sm flex items-center gap-2 group">
+                  <span className=" text-[#3B82F6] group-hover:translate-x-1 transition-transform font-20">›</span> 
+                  <span className="font-semibold font-16">AI with Java</span>
                 </Link>
               </li>
             </ul>
@@ -117,31 +132,41 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-[#1E40AF] rounded-lg flex items-center justify-center">
-                <span className="text-white text-sm">📖</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 border border-[#1A72F5] bg-[#1A72F51A] rounded-lg flex items-center justify-center p-2">
+                <Image 
+                  src={svgImages.doc} 
+                  alt="Resources"
+                  width={24}
+                  height={24}
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <h3 className="text-white font-semibold">Resources</h3>
+              <h3 className="text-white font-semibold text-lg">Resources</h3>
             </div>
             <ul className="space-y-3">
               <li>
-                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2">
-                  <span>›</span> Curriculum
+                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                  <span className="text-[#3B82F6] group-hover:translate-x-1 font-20  transition-transform">›</span> 
+                  <span className="font-semibold font-16 text-white">Curriculum</span>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2">
-                  <span>›</span> Blog
+                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                  <span className="text-[#3B82F6] group-hover:translate-x-1 font-20  transition-transform">›</span> 
+                  <span className="font-semibold font-16 text-white">Blog</span>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2">
-                  <span>›</span> Success Stories
+                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                  <span className="text-[#3B82F6] group-hover:translate-x-1 font-20  transition-transform">›</span> 
+                  <span className="font-semibold font-16 text-white">Success Stories</span>
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2">
-                  <span>›</span> FAQ
+                <Link href="#" className="text-[#94A3B8] hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                  <span className="text-[#3B82F6] group-hover:translate-x-1 font-20  transition-transform">›</span> 
+                  <span className="font-semibold font-16 text-white">FAQ</span>
                 </Link>
               </li>
             </ul>
@@ -149,31 +174,40 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-[#1E40AF] rounded-lg flex items-center justify-center">
-                <span className="text-white text-sm">📞</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 border border-[#1A72F5] bg-[#1A72F51A] rounded-lg flex items-center justify-center p-2">
+                <Image 
+                  src={svgImages.headphone} 
+                  alt="Contact"
+                  width={24}
+                  height={24}
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <h3 className="text-white font-semibold">Contact</h3>
+              <h3 className="text-white font-semibold text-lg">Contact</h3>
             </div>
             
             <div className="space-y-4">
               <div>
-                <p className="text-white font-medium text-sm mb-1">Phone Numbers</p>
-                <p className="text-[#94A3B8] text-sm">+91-9109954955</p>
-                <p className="text-[#94A3B8] text-sm">+91-9109977337</p>
+                <p className="text-white font-semibold font-16 mb-2 ">Phone Numbers</p>
+                <div className="flex gap-2 font-16">
+ <p className="">+91-9109954955</p>
+                <p className="">+91-9109977337</p>
+                </div>
+               
               </div>
 
               <div>
-                <p className="text-white font-medium text-sm mb-1">Emails General</p>
+                <p className="text-white font-medium text-sm mb-2">Emails General</p>
                 <p className="text-[#94A3B8] text-sm">info@renaissance.ac.in</p>
               </div>
 
               <div>
-                <p className="text-white font-medium text-sm mb-1">Address</p>
+                <p className="text-white font-medium text-sm mb-2">Address</p>
                 <p className="text-[#94A3B8] text-sm">Indore</p>
               </div>
 
-              <button className="bg-[#1E40AF] hover:bg-[#1D4ED8] text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
+              <button className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-6 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors mt-4">
                 Apply Now
                 <ArrowRight size={16} />
               </button>
@@ -182,25 +216,33 @@ export default function Footer() {
         </div>
 
         {/* Stats Section */}
-        <div className="mt-12 pt-8 border-t border-[#1E293B]">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+        <div className="mt-10 p-4 bg-[#FFFFFF05] border border-[#FFFFFF1F] rounded-lg">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="flex items-center justify-center gap-3 mb-2">
+              <div key={index} className="flex flex-col items-center md:items-start">
+                <div className="flex items-center gap-3 mb-2">
                   <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: `${stat.color}20` }}
+                    className="w-12 h-12 rounded-xl flex items-center justify-center p-2"
+                    style={{ backgroundColor: stat.bgColor }}
                   >
-                    <span className="text-lg">{stat.icon}</span>
+                    <Image 
+                      src={stat.icon} 
+                      alt={stat.label}
+                      width={32}
+                      height={32}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div className="text-left">
                     <div 
-                      className="text-2xl font-bold"
+                      className="text-2xl md:text-3xl font-bold"
                       style={{ color: stat.color }}
                     >
                       {stat.number}
                     </div>
-                    <div className="text-[#94A3B8] text-sm">{stat.label}</div>
+                    <div className="text-[#94A3B8] text-xs md:text-sm whitespace-nowrap">
+                      {stat.label}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -210,7 +252,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Section */}
-      <div className="border-t border-[#1E293B] bg-[#0F172A]">
+      <div className="border-t border-[#1E293B] bg-[#020817]">
         <div className="max-container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-[#64748B] text-sm">

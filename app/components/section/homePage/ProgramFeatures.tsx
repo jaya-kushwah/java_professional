@@ -143,28 +143,32 @@ export default function ProgramFeatures() {
       description: "Mentors guide learners through concepts, coding techniques, and practical development scenarios.",
       borderColor: "#F9CE04",
       icon: svgImages.feature_1,
-      accentColor: "border-b-yellow-500"
+      accentColor: "border-b-yellow-500",
+      background: "#B44C07"
     },
     {
       title: "Interactive Mentor Sessions",
       description: "Mentors guide learners through concepts, coding techniques, and practical development scenarios.",
       borderColor: "#0846CC",
       icon: svgImages.feature_2,
-      accentColor: "border-b-blue-500"
+      accentColor: "border-b-blue-500",
+      background: "#1439BC"
     },
     {
       title: "Interactive Mentor Sessions",
       description: "Mentors guide learners through concepts, coding techniques, and practical development scenarios.",
       borderColor: "#914FD2",
       icon: svgImages.feature_3,
-      accentColor: "border-b-purple-500"
+      accentColor: "border-b-purple-500",
+      background: "#7E42B2"
     },
     {
       title: "Interactive Mentor Sessions",
       description: "Mentors guide learners through concepts, coding techniques, and practical development scenarios.",
       borderColor: "#00BAB9",
       icon: svgImages.feature_4,
-      accentColor: "border-b-teal-500"
+      accentColor: "border-b-teal-500",
+      background: "#469CA6"
     }
   ];
 
@@ -203,7 +207,7 @@ export default function ProgramFeatures() {
               initial={{ opacity: 0, y: 30 }}
               animate={isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={` rounded-2xl p-4 md:p-6 transition-all duration-300 border-b-4`}
+              className={` rounded-2xl p-4 md:p-6 transition-all duration-300 border-b-4 relative`}
               style={{
                 border: `1px solid ${feature.borderColor}`,
                 borderBottom: `4px solid ${feature.borderColor}`,
@@ -215,8 +219,7 @@ export default function ProgramFeatures() {
                     {feature.title}
                   </h3>
                   <div
-                    className="
-  w-8 sm:w-12 h-[2px] md:h-[3px] rounded-md mb-3 md:mb-5"
+                    className="w-8 sm:w-12 h-[2px] md:h-[3px] rounded-md mb-3 md:mb-5"
                     style={{ background: feature.borderColor }}
                   ></div>
                   <p className="text-gray-300 text-[10px] md:text-[16px] leading-relaxed">
@@ -231,11 +234,15 @@ export default function ProgramFeatures() {
                       alt={feature.title}
                       width={80}
                       height={80}
-                      className="w-25 h-25 md:w-60 md:h-60 object-contain"
+                      className="w-25 h-25 md:w-60 md:h-60 object-contain z-10"
                     />
                   </div>
                 </div>
               </div>
+              <div className={`absolute rounded-[50%] bottom-10 right-8 w-60 h-20 blur-3xl `}
+              style={{
+                background: feature.background
+              }}/>
             </motion.div>
           ))}
         </div>

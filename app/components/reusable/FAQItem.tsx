@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowDown, ChevronDown, Minus } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 interface FAQItemProps {
   question: string;
@@ -34,7 +34,7 @@ export default function FAQItem({ question, answer, index = 0, isOpen, onToggle 
         <motion.div
           // animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
-          className={`flex-shrink-0 w-5 h-5 md:w-8 md:h-8 rounded-full flex items-center justify-center ${isOpen ? "bg-black text-white" : "bg-[#F2F6FA] text-gray-600"
+          className={`shrink-0 w-5 h-5 md:w-8 md:h-8 rounded-full flex items-center justify-center ${isOpen ? "bg-black text-white" : "bg-[#F2F6FA] text-gray-600"
             } transition-colors duration-300`}
         >
             <ArrowDown strokeWidth={2} size={18}/>
