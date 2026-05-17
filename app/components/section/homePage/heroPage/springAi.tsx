@@ -9,7 +9,11 @@ import {
   GraduationCap, BrainCircuit,
   ShieldCheck,
   Users,
+  BookOpen,
 } from "lucide-react";
+import { FaLaptopCode } from "react-icons/fa6";
+import { LuChartNoAxesCombined } from "react-icons/lu";
+import { TbUserCog } from "react-icons/tb";
 
 export default function SpringAi() {
   const stat = [
@@ -44,7 +48,7 @@ export default function SpringAi() {
       title: "Learn In-Demand Skills",
       description:
         "Master Spring AI, LLMs, and modern frameworks used by top companies.",
-      icon: BriefcaseBusiness,
+      icon: BookOpen ,
       color: "#63D15F",
       bg: "#63D15F1A"
     },
@@ -52,7 +56,7 @@ export default function SpringAi() {
       title: "Hands-on Learning",
       description:
         "Work on real-world scenarios and build production-ready applications.",
-      icon: Code2,
+      icon: FaLaptopCode,
       color: "#F9CE04",
       bg: "#F9CE041A"
     },
@@ -60,7 +64,7 @@ export default function SpringAi() {
       title: "Industry-Relevant",
       description:
         "Curriculum designed with inputs from industry experts and practitioners.",
-      icon: ChartNoAxesColumn,
+      icon: LuChartNoAxesCombined,
       color: "#1A72F5",
       bg: "#1F76F91A"
     },
@@ -68,7 +72,7 @@ export default function SpringAi() {
       title: "Guided by Experts",
       description:
         "Learn from experienced developers and get mentorship at every step.",
-      icon: GraduationCap,
+      icon: TbUserCog,
       color: "#F9CE04",
       bg: "#F9CE041A"
     },
@@ -98,7 +102,7 @@ export default function SpringAi() {
               <div className="max-w-7xl mt-12">
                 <div className="inline-flex items-center gap-2 border border-[#63D15F] p-1 px-2 rounded-full">
                   <Image src={svgImages.star} alt="star" width={16} height={16} />
-                  <span className="white font-14 font-medium uppercase tracking-wider">
+                  <span className="white font-14 font-medium uppercase tracking-wider whitespace-nowrap">
                     Spring AI + Project-Based Learning
                   </span>
                 </div>
@@ -130,7 +134,7 @@ export default function SpringAi() {
                 </div>
               </div>
 
-              <div className="mt-20">
+              <div className="mt-0 md:mt-20">
                 <div className="flex flex-wrap lg:flex-nowrap items-center">
                   {stat.map((item, index) => {
                     const Icon = item.icon;
@@ -194,7 +198,8 @@ export default function SpringAi() {
                         className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
                         style={{ border: `1px solid ${item.color}`, backgroundColor: item.bg }}
                       >
-                        <Icon className="w-7 h-7 text-white" />
+                        <Icon className="w-8 h-8 text-white" 
+                           style={{ color: item.color}}/>
                       </div>
 
                       {/* Content */}

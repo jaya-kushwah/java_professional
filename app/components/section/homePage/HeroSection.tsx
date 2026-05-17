@@ -30,10 +30,10 @@ export default function HeroSection() {
           <SpringAi />
         </SwiperSlide>
         <SwiperSlide>
-          <EnterpriseArchitecture />
-        </SwiperSlide>
-        <SwiperSlide>
           <BackendTraining />
+        </SwiperSlide>
+                <SwiperSlide>
+          <EnterpriseArchitecture />
         </SwiperSlide>
       </Swiper>
     </section>

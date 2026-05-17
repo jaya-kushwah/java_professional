@@ -5,10 +5,10 @@ import { pngImages, svgImages } from "@/app/utils/localImages";
 import Link from "next/link";
 import {
   ArrowRight, BriefcaseBusiness,
-  Code2,
-  ChartNoAxesColumn,
-  GraduationCap,
+  ChartNoAxesCombined,
 } from "lucide-react";
+import { HiUsers } from "react-icons/hi";
+import { LiaLaptopCodeSolid } from "react-icons/lia";
 
 
 export default function JavaDeveloper() {
@@ -35,21 +35,21 @@ export default function JavaDeveloper() {
       title: "Learn industry-standard tools & frameworks",
       description:
         "Gain hands-on experience by building industry-level applications.",
-      icon: Code2,
+      icon: LiaLaptopCodeSolid,
       color: "#6D28F8",
     },
     {
       title: "Build a professional developer portfolio",
       description:
         "Create impactful projects that showcase your skills.",
-      icon: ChartNoAxesColumn,
+      icon:ChartNoAxesCombined ,
       color: "#11C5D9",
     },
     {
       title: "Get trained for real software development roles",
       description:
         "Preparation and career support.",
-      icon: GraduationCap,
+      icon: HiUsers,
       color: "#FF9800",
     },
   ];
@@ -170,7 +170,7 @@ export default function JavaDeveloper() {
                         className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0"
                         style={{ backgroundColor: item.color }}
                       >
-                        <Icon className="w-7 h-7 text-white" />
+                        <Icon className="w-8 h-8 text-white" />
                       </div>
 
                       {/* Content */}
