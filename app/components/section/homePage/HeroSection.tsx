@@ -23,18 +23,18 @@ export default function HeroSection() {
         speed={1000}
         className="h-full w-full"
       >
-        {/* <SwiperSlide>
+        <SwiperSlide>
           <JavaDeveloper />
-        </SwiperSlide> */}
+        </SwiperSlide>
         <SwiperSlide>
           <SpringAi />
         </SwiperSlide>
-        {/* <SwiperSlide>
+        <SwiperSlide>
           <EnterpriseArchitecture />
         </SwiperSlide>
         <SwiperSlide>
           <BackendTraining />
-        </SwiperSlide> */}
+        </SwiperSlide>
       </Swiper>
     </section>
   );
