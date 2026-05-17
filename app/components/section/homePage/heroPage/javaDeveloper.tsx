@@ -75,7 +75,7 @@ export default function JavaDeveloper() {
             {/* Left Side - Content */}
             <div className="text-white flex flex-col items-start  h-full justify-around px-4 lg:px-0">
 
-              <div className="max-w-7xl mt-10">
+              <div className="max-w-7xl mt-3 md:mt-10">
                 <div className="inline-flex items-center gap-2 border border-[#1A72F5] p-1 px-2 rounded-full">
                   <Image src={svgImages.star} alt="star" width={16} height={16} />
                   <span className="primary font-14 font-medium uppercase tracking-wider">
@@ -93,7 +93,7 @@ export default function JavaDeveloper() {
                 <div className="flex flex-col sm:flex-row gap-3 mt-3 w-full sm:w-auto">
                   <Link
                     href="/curriculum"
-                    className=" sm:w-auto w-fit flex md:inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-2 bg-[#1A72F5] text-white rounded-md transition-all duration-300 text-sm sm:text-base"
+                    className=" sm:w-auto w-fit flex md:inline-flex items-center justify-center gap-2 px-2 sm:px-6 py-1 sm:py-2 bg-[#1A72F5] text-white rounded-md transition-all duration-300 text-sm sm:text-base"
                   >
                     Start Developer Training
                     <ArrowRight size={16} />
@@ -102,7 +102,7 @@ export default function JavaDeveloper() {
                   <Link
                     href="/course"
                     // className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-all duration-300 font-medium text-sm sm:text-base"
-                    className=" sm:w-auto w-fit flex md:inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-2 border border-[#0F172A] text-[#0F172A] rounded-md transition-all duration-300 text-sm sm:text-base"
+                    className=" sm:w-auto w-fit flex md:inline-flex items-center justify-center gap-2 px-2 sm:px-6 py-1 sm:py-2 border border-[#0F172A] text-[#0F172A] rounded-md transition-all duration-300 text-sm sm:text-base"
                   >
                     View Cirriculum
                     <ArrowRight size={16} />
@@ -110,9 +110,9 @@ export default function JavaDeveloper() {
                 </div>
               </div>
 
-              <div className="sm:mb-20 mt-6 w-full px-0 lg:px-0 bg-white rounded-md">
+              <div className="sm:mb-20 mt-3 md:mt-4 w-full px-0 lg:px-0 bg-white rounded-[18px]">
                 <div className=" inline-block  border-[#FFFFFF4D] ">
-                  <div className="flex items-center gap-2 px-8 py-2">
+                  <div className="flex items-center gap-2 px-2 md:px-4 py-2">
                     <span className="relative flex h-4 w-4">
                       <span className="absolute inline-flex h-full w-full rounded-full bg-[#3B82F6] opacity-30"></span>
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#2563EB] m-auto"></span>
@@ -124,20 +124,20 @@ export default function JavaDeveloper() {
                   </div>
 
 
-                  <div className="grid grid-cols-4 sm:grid-cols-8 px-7 py-2 bg-[linear-gradient(90deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.14)_100%)]">
+                  <div className="grid grid-cols-4 sm:grid-cols-8 px-1 md:px-4 pb-0 md:pb-2 bg-[linear-gradient(90deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.14)_100%)]">
                     {technologies.map((tech, index) => (
                       <div key={index} className="relative aspect-square">
                         <div
                           className="border-4 border-[#FFFFFF4D] flex items-center justify-center transition-all duration-300"
                         >
 
-                          <div className="w-[85px] h-[72px] bg-[#FBFDFF] border border-[#D3E2F9] rounded-md flex flex-col items-center justify-center">
+                          <div className="w-[60px] h-[53px] md:w-[88px] md:h-[74px] bg-[#FBFDFF] border border-[#D3E2F9] rounded-md flex flex-col items-center justify-center">
                             <Image
                               src={tech.icon}
                               alt={tech.name}
                               width={28}
                               height={28}
-                              className="w-10 h-10 object-contain"
+                              className="h-6 w-6 md:w-12 md:h-12 object-contain"
                             />
 
                             <span className="font-12 bold text-black">
@@ -154,45 +154,45 @@ export default function JavaDeveloper() {
             </div>
           </div>
 
-          <div className="px-4 lg:px-0 mt-[-52px]">
-             <div className="bg-[#06152F] rounded-[18px] p-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {features.map((item, index) => {
-              const Icon = item.icon;
+          <div className="px-4 lg:px-0 mt-[-62px] hidden lg:block">
+            <div className="bg-[#06152F] rounded-[18px] p-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {features.map((item, index) => {
+                  const Icon = item.icon;
 
-              return (
-                <div
-                  key={index}
-                  className="relative flex items-start gap-4 rounded-xl p-3"
-                >
-                  {/* Icon */}
-                  <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ backgroundColor: item.color }}
-                  >
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-
-                  {/* Content */}
-                  <div>
-                    <h3 className="text-white font-semibold text-[18px] leading-[24px]">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-[#B8C7E0] text-[13px] leading-[20px] mt-1">
-                      {item.description}
-                    </p>
-
+                  return (
                     <div
-                      className="w-10 h-[3px] rounded-full mt-4"
-                      style={{ backgroundColor: item.color }}
-                    />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div></div>
+                      key={index}
+                      className="relative flex items-start gap-4 rounded-xl p-2"
+                    >
+                      {/* Icon */}
+                      <div
+                        className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0"
+                        style={{ backgroundColor: item.color }}
+                      >
+                        <Icon className="w-7 h-7 text-white" />
+                      </div>
+
+                      {/* Content */}
+                      <div>
+                        <h3 className="text-white font-semibold text-[18px] leading-[24px]">
+                          {item.title}
+                        </h3>
+
+                        <p className="text-[#B8C7E0] text-[13px] leading-[20px] mt-1">
+                          {item.description}
+                        </p>
+
+                        <div
+                          className="w-10 h-[3px] rounded-full mt-2"
+                          style={{ backgroundColor: item.color }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div></div>
         </div>
       </div>
     </section>

@@ -130,7 +130,7 @@ export default function SpringAi() {
                 </div>
               </div>
 
-              <div className="mt-27">
+              <div className="mt-20">
                 <div className="flex flex-wrap lg:flex-nowrap items-center">
                   {stat.map((item, index) => {
                     const Icon = item.icon;
@@ -154,7 +154,7 @@ export default function SpringAi() {
                           />
                         </div>
 
-                        <p className="text-white medium font-14 leading-[18px] whitespace-preline">
+                        <p className="text-white medium font-14 leading-[18px] whitespace-nowrape">
                           {item.title}
                         </p>
                       </div>
@@ -165,8 +165,8 @@ export default function SpringAi() {
             </div>
 
             {/* Right Side Image */}
-            <div className="flex items-end justify-start relative w-full ">
-              <div className="relative w-full h-[480px]">
+            <div className="flex items-end justify-start relative w-full mr-110">
+              <div className="relative w-full h-[490px]">
                 <Image
                   src={pngImages.technology}
                   alt="Technology"
@@ -178,7 +178,7 @@ export default function SpringAi() {
             </div>
           </div>
 
-          <div className="px-4 lg:px-0 mt-6">
+          <div className="px-4 lg:px-0 mt-5">
             <div className="bg-[#001333] rounded-[18px] p-4">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {features.map((item, index) => {
